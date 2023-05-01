@@ -6,13 +6,30 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
+
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView
+
 from .models import Circle
 
 
 
 
-
 # Create your views here.
+
+# Class Based Views
+class CircleCreate(CreateView):
+    model = Circle
+    fields = ['title', 'creator', 'description', 'tags']
+
+    # Interrupt normal form_valid functionality to assign user
+    def form_valid(self, form):
+        # Assign logged in user
+        form.instance.user = self.request.user
+        # Allow CreateView to continue
+        return super().form_valid(form)
+
+# Function Views
 def home(request):
     return HttpResponse('<h1> Hello /ᐠ｡‸｡ᐟ\ﾉ </h1>')
 
@@ -24,8 +41,8 @@ def circles_index(request):
     return render(request, 'circles/index.html', { 'circles': circles })
 
 def circle_detail(request, circle_id):
-    circle= Circle.obects.get(id=circle_id)
-    return render(request, 'circle/detail.html', { 'circle': circle })
+    circle= Circle.objects.get(id=circle_id)
+    return render(request, 'circles/detail.html', { 'circle': circle })
 
 def signup(request):
   error_message = ''

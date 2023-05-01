@@ -10,9 +10,13 @@ class Circle(models.Model):
     link = models.URLField(max_length=500)
     description = models.TextField()
     tags = models.CharField(max_length=100)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
     allowed = models.ManyToManyField(User, related_name='allowed')  
     requested = models.ManyToManyField(User, related_name='requested')
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'circle_id': self.id})

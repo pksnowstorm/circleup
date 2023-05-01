@@ -20,13 +20,14 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">  circleUp</a>
+              <a href="/accounts/login" class="left brand-logo">  circleUp</a>
             </li>
           </ul>
           <ul class="right">
             <li><a href="/about">About</a></li>
 
             {% if user.is_authenticated %}
+            <li><a href="{% url 'circle_create' %}">New Circle</a></li>
             <li><a href="{% url 'index' %}">Circles</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
@@ -44,4 +45,4 @@
       </div>
     </footer>
   </body>
-</html>
+</html> 
