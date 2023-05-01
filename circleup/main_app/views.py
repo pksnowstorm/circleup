@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
+from .models import Circle
 
 
 
@@ -17,6 +18,14 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def circles_index(request):
+    circles = Circle.objects.all()
+    return render(request, 'circles/index.html', { 'circles': circles })
+
+def circle_detail(request, circle_id):
+    circle= Circle.obects.get(id=circle_id)
+    return render(request, 'circle/detail.html', { 'circle': circle })
 
 def signup(request):
   error_message = ''
