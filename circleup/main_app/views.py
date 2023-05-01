@@ -18,7 +18,8 @@ from .models import Circle
 # Create your views here.
 
 # Class Based Views
-class CircleCreate(CreateView):
+
+class CircleCreate(LoginRequiredMixin,  CreateView):
     model = Circle
     fields = ['title', 'creator', 'description', 'tags']
 
@@ -29,11 +30,11 @@ class CircleCreate(CreateView):
         # Allow CreateView to continue
         return super().form_valid(form)
     
-class CircleUpdate(UpdateView):
+class CircleUpdate(LoginRequiredMixin,  UpdateView):
     model = Circle
     fields = ['title', 'creator', 'description', 'tags']
 
-class CircleDelete(DeleteView):
+class CircleDelete(LoginRequiredMixin,  DeleteView):
     model = Circle
     success_url = "/circles"
 
@@ -44,10 +45,12 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def circles_index(request):
-    circles = Circle.objects.all()
+    circles = Circle.objects.filter(user=request.user)
     return render(request, 'circles/index.html', { 'circles': circles })
 
+@login_required
 def circle_detail(request, circle_id):
     circle= Circle.objects.get(id=circle_id)
     return render(request, 'circles/detail.html', { 'circle': circle })
