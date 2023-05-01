@@ -28,6 +28,14 @@ class CircleCreate(CreateView):
         form.instance.user = self.request.user
         # Allow CreateView to continue
         return super().form_valid(form)
+    
+class CircleUpdate(UpdateView):
+    model = Circle
+    fields = ['title', 'creator', 'description', 'tags']
+
+class CircleDelete(DeleteView):
+    model = Circle
+    success_url = "/circles"
 
 # Function Views
 def home(request):
