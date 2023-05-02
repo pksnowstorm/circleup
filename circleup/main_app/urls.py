@@ -11,4 +11,5 @@ urlpatterns = [
     path('circles/create', views.CircleCreate.as_view(), name='circle_create'),
     path('circles/<int:pk>/update', views.CircleUpdate.as_view(), name="circle_update"),
     path('circles/<int:pk>/delete', views.CircleDelete.as_view(), name="circle_delete"),
+    path('circless/<int:circle_id>/add_comment/', views.add_comment, name='add_comment'),
 ]
