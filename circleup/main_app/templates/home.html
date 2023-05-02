@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<section id="home-signs">
+    {% if user.is_authenticated %}
+        <form action="{% url 'index' %}" method="GET">
+            <input type="submit" value="Circles" />
+        </form>
+        {% else %}
+        <form  action="{% url 'signup' %}" method="GET">
+            <input class="btn" type="submit" value="Sign Up" />
+        </form>
+        <form action="{% url 'login' %}" method="GET">
+            <input class="btn" type="submit" value="Log In" />
+        </form>
+    {% endif %}
+</section>
+
+{% endblock %}
