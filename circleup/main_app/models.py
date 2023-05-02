@@ -13,10 +13,16 @@ class Circle(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
     allowed = models.ManyToManyField(User, related_name='allowed')  
-    requested = models.ManyToManyField(User, related_name='requested')
-
+    requested = models.ManyToManyField(User, related_name='requested')    
+    
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'circle_id': self.id})
+
+class Comment(models.Model):
+    content = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    circle = models.ForeignKey(Circle, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)

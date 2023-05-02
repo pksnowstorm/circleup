@@ -12,8 +12,7 @@ from django.views.generic import ListView, DetailView
 
 from .models import Circle
 
-
-
+from .forms import CommentForm
 
 # Create your views here.
 
@@ -53,7 +52,8 @@ def circles_index(request):
 @login_required
 def circle_detail(request, circle_id):
     circle= Circle.objects.get(id=circle_id)
-    return render(request, 'circles/detail.html', { 'circle': circle })
+    comment_form = CommentForm()
+    return render(request, 'circles/detail.html', { 'circle': circle, 'comment_form': comment_form })
 
 def signup(request):
   error_message = ''
@@ -68,3 +68,13 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def add_comment(request, circle_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.circle_id = circle_id
+    u = request.user
+    new_comment.user_id = u.id
+    new_comment.save()
+  return redirect('detail', circle_id=circle_id)
