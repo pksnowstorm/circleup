@@ -1,1 +1,1 @@
-web: gunicorn circleup.circleup.wsgi
+web: gunicorn circleup.circleup.circleup.wsgi
