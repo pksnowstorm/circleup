@@ -53,7 +53,11 @@ def circles_index(request):
 def circle_detail(request, circle_id):
     circle= Circle.objects.get(id=circle_id)
     comment_form = CommentForm()
-    return render(request, 'circles/detail.html', { 'circle': circle, 'comment_form': comment_form })
+    comments = circle.comments.all()
+    return render(request, 'circles/detail.html', 
+                  { 'circle': circle, 
+                    'comment_form': comment_form, 
+                    'comments': comments })
 
 def signup(request):
   error_message = ''
