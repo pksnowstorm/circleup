@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath circleup.circleup.circleup.wsgi
+web: gunicorn circleup.circleup.circleup.wsgi
