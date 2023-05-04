@@ -41,3 +41,9 @@ body {
     margin-left: 0;
     font-size: 40px;
   }
+
+  .buttons {
+    text-align: center;
+    align-content: center;
+    background-color: #E9B253;
+  }
