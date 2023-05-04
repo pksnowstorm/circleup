@@ -25,14 +25,16 @@
     </div>
     <div class="col s6">
         <form action="{% url 'add_comment' circle.id %}" method="post">
-          {% csrf_token %} {{ comment_form.as_p }}
+          {% csrf_token %}
+          {{ comment_form.as_p }}
           <input type="submit" class="btn" value="Add Comment" />
         </form>
-        <div class="comment-section">
+        <div class="comments-section">
         {% if comments %}
             {% for comment in comments %}
-            <div class="card">
+            <div class="card comment-card">
                 <div class="card-content">
+                    <strong><p>{{ comment.user.username }}</p></strong>
                     <p>{{ comment.content }}</p>
                     <p>{{ comment.user.username }}</p>
                     <p>{{ comment.created }}</p>
@@ -41,6 +43,9 @@
             {% endfor %}
         {% endif %}
     </div>
+    </div>
+</div>
+        </div>
     </div>
 </div>
 {% endblock %}
