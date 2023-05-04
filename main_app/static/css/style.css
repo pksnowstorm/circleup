@@ -53,3 +53,10 @@ body {
     margin: 0;
     font-size: 20px;
   }
+
+  .comment-section{
+    max-height: 25vh;
+    max-width: 100%;
+    background-color: #32569B;
+    overflow-y:scroll;
+}
