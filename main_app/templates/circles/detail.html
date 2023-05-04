@@ -11,10 +11,12 @@
                 <p>Description: {{ circle.description }}</p>
                 <p>Tags: {{ circle.tags }}</p>
             </div>
+            {% if request.user == circle.user or request.user.is_superuser%}
             <div class="card-action">
                 <a href="{% url 'circle_update' circle.id %}">Edit</a>
                 <a href="{% url 'circle_delete' circle.id %}">Delete</a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="col s6">
