@@ -26,3 +26,18 @@ body {
   .btn {
     background-color: #E9B253;
   }
+
+  .card {
+    border-radius: 100px 100px 100px 100px;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 0;
+    margin-left: 0;
+    font-size: 40px;
+  }
