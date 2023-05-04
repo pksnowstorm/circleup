@@ -20,7 +20,7 @@ from .forms import CommentForm
 
 class CircleCreate(LoginRequiredMixin,  CreateView):
     model = Circle
-    fields = ['title', 'creator', 'description', 'tags']
+    fields = ['title', 'creator', 'link','description', 'tags']
 
     # Interrupt normal form_valid functionality to assign user
     def form_valid(self, form):
