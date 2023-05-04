@@ -16,32 +16,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
-    <header class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="/" class="brand-logo"><i class="material-icons">group_work</i>circleUp</a>
-              <a href="/" data-target="side_nav" class="sidenav-trigger"><i class="material-icon">menu</i></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-      <ul id="side_nav" class="sidenav card-panel indigo darken-4">
-        <li><a href="/about"><span class="amber-text text-lighten-4">About</span></a></li>
 
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'circle_create' %}"><span class="amber-text text-lighten-4">New Circle</span></a></li>
-        <li><a href="{% url 'index' %}"><span class="amber-text text-lighten-4">Circles</span></a></li>
-        <li><a href="{% url 'logout' %}"><span class="amber-text text-lighten-4">Log Out</span></a></li>
-        {% else %}
-        <li><a href="{% url 'signup' %}"><span class="amber-text text-lighten-4">Sign Up</span></a></li>
-        <li><a href="{% url 'login' %}"><span class="amber-text text-lighten-4">Log In</span></a></li>
-        {% endif %}
-      </ul>
-      <a href="/" data-target="side_nav" class="sidenav-trigger"><i class="material-icon">menu</i></a>
-    <main class="container">{% block content %} {% endblock %}</main>
+    <a href="/" data-target="side_nav" id="nav-trigger" class="sidenav-trigger"><p><i class="small material-icons">group_work</i>circleUp</p></a>
+    <ul id="side_nav" class="sidenav card-panel indigo darken-4">
+
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'circle_create' %}"><span class="amber-text text-lighten-4">New Circle</span></a></li>
+      <li><a href="{% url 'index' %}"><span class="amber-text text-lighten-4">Circles</span></a></li>
+      <li><a href="/about"><span class="amber-text text-lighten-4">About</span></a></li>
+      <li><a href="{% url 'logout' %}"><span class="amber-text text-lighten-4">Log Out</span></a></li>
+      {% else %}
+      <li><a href="/about"><span class="amber-text text-lighten-4">About</span></a></li>
+      <li><a href="{% url 'signup' %}"><span class="amber-text text-lighten-4">Sign Up</span></a></li>
+      <li><a href="{% url 'login' %}"><span class="amber-text text-lighten-4">Log In</span></a></li>
+      {% endif %}
+    </ul>
+
+    <main class="container">
+      {% block content %}
+      {% endblock %}
+    </main>
+
     <footer class="page-footer">
       <div class="right">
         All Rights Reserved, © 2023 Team Deathcore  
