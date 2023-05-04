@@ -6,18 +6,22 @@
     <div class="col s6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">{{ circle.title }}</span>
-                <p>Creator: {{ circle.creator }}</p>
-                <p>Description: {{ circle.description }}</p>
-                <p>Tags: {{ circle.tags }}</p>
+                <span class="card-title"><strong> {{ circle.title }} </strong> </span>
+                <p><strong>Creator: </strong> {{ circle.creator }}</p>
+                <p><strong>Description: </strong> {{ circle.description }}</p>
+                <p><strong>Tags: </strong> {{ circle.tags }}</p>
             </div>
+            </br>
+            </br>
             {% if request.user == circle.user or request.user.is_superuser%}
-            <div class="card-action">
-                <a href="{% url 'circle_update' circle.id %}">Edit</a>
-                <a href="{% url 'circle_delete' circle.id %}">Delete</a>
+            
+                <div class="buttons">
+                    <a href="{% url 'circle_update' circle.id %}">Edit</a>
+                    <a href="{% url 'circle_delete' circle.id %}">Delete</a>
+                </div>
             </div>
             {% endif %}
-        </div>
+        
     </div>
     <div class="col s6">
         <form action="{% url 'add_comment' circle.id %}" method="post">
