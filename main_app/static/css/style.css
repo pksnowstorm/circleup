@@ -25,6 +25,7 @@ body {
 
   .btn {
     background-color: #E9B253;
+    align-content: space-around;
   }
 
   .circ {
@@ -40,6 +41,7 @@ body {
     padding: 0;
     margin-left: 0;
     font-size: 40px;
+    /* background-color: red; */
   }
 
   .buttons {
@@ -52,6 +54,7 @@ body {
     padding: 0;
     margin: 0;
     font-size: 20px;
+    /* background: red; */
   }
 
   .comments-section {
@@ -67,4 +70,8 @@ body {
     max-width: 98%;
     /* padding: 0px;
     margin: 0px; */
+  }
+
+  .btn-inline {
+    display:right;
   }
