@@ -4,9 +4,7 @@
 
 {% for circle in circles %}
 
-<div class="card">
-    <!-- add this single line below -->
-    
+<div class="card circ">
     <a href="{% url 'detail' circle.id %}">
       <div class="card-content">
         <span class="card-title">{{ circle.title }}</span>
@@ -14,4 +12,5 @@
       </div>
     </a>
   </div>
+</br>
 {% endfor %} {% endblock %}
