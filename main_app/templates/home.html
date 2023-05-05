@@ -1,41 +1,37 @@
 {% extends 'base.html' %} {% block content %}
 </br>
 </br>
-<div class="valign-wrapper"></div>
-<p2><i class="large material-icons">group_work</i>circleUp</p2>
+<div class="left-align"></div>
+    <p2><i class="large material-icons">group_work</i>circleUp</p2>
 </div>
 
-<div class="buttonslanding">
+<h3 class="white-text center-align">Providing a forum for focused conversation.</h3>
 
-
-{% if user.is_authenticated %}
-<section id="home-signs">
-    <div class="row">
-        <div class="col s6">
-        <form action="{% url 'index' %}" method="GET">
-            <input type="submit" value="Circles" />
-        </form>
-    </div>
-
-    {% else %}
-
-
-    <div class="row">
-        <div class="col s6">
-            <form  action="{% url 'signup' %}" method="GET">
-            <input class="btn" type="submit" value="Sign Up" />
-            </form>
+<div class="container buttonslanding">
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col s6">
+                <form action="{% url 'index' %}" method="GET">
+                    <input class="btn" type="submit" value="Circles" />
+                </form>
+            </div>
         </div>
 
+    {% else %}
+        <div class="row">
+            <div class="col s6">
+                <form  action="{% url 'signup' %}" method="GET">
+                    <input class="btn" type="submit" value="Sign Up" />
+                </form>
+            </div>
 
-    <div class="col s6">
-        <form action="{% url 'login' %}" method="GET">
-        <input class="btn" type="submit" value="Log In" />
-        </form>
-    </div>
+            <div class="col s6">
+                <form action="{% url 'login' %}" method="GET">
+                    <input class="btn" type="submit" value="Log In" />
+                </form>
+            </div>
+        </div>
     {% endif %}
-
-</section>
 </div>
 
 

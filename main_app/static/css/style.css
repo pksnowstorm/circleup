@@ -36,13 +36,13 @@ body {
     margin: 0 auto;
   }
   
-  h1 {
+  /* h1 {
     text-align: center;
     padding: 0;
     margin-left: 0;
     font-size: 40px;
-    /* background-color: red; */
-  }
+    background-color: red;
+  } */
 
   .buttons {
     text-align: center;
@@ -55,6 +55,10 @@ body {
     margin: 0;
     font-size: 20px;
     /* background: red; */
+  }
+
+  .logo-trigger {
+    background-color:  #0E316A;
   }
 
   .comments-section {
