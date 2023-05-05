@@ -1,18 +1,44 @@
 {% extends 'base.html' %} {% block content %}
+</br>
+</br>
+<div class="valign-wrapper"></div>
+<p2><i class="large material-icons">group_work</i>circleUp</p2>
+</div>
 
+<div class="buttonslanding">
+
+
+{% if user.is_authenticated %}
 <section id="home-signs">
-    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col s6">
         <form action="{% url 'index' %}" method="GET">
             <input type="submit" value="Circles" />
         </form>
-        {% else %}
-        <form  action="{% url 'signup' %}" method="GET">
+    </div>
+
+    {% else %}
+
+
+    <div class="row">
+        <div class="col s6">
+            <form  action="{% url 'signup' %}" method="GET">
             <input class="btn" type="submit" value="Sign Up" />
-        </form>
+            </form>
+        </div>
+
+
+    <div class="col s6">
         <form action="{% url 'login' %}" method="GET">
-            <input class="btn" type="submit" value="Log In" />
+        <input class="btn" type="submit" value="Log In" />
         </form>
+    </div>
     {% endif %}
+
 </section>
+</div>
+
+
+
 
 {% endblock %}
