@@ -1,16 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Circles List</h1>
+<h2 class="white-text">Welcome back {{ request.user }}!</h2>
+<h1 class="white-text left-align">Circles List</h1>
 
-{% for circle in circles %}
-
-<div class="card circ">
-    <a href="{% url 'detail' circle.id %}">
+<div id="container index-grid">
+  {% for circle in circles %}
+  <a href="{% url 'detail' circle.id %}">
+    <div class="card valign-wrapper circ circ-index ">
       <div class="card-content">
         <span class="card-title">{{ circle.title }}</span>
         <p>Creator: {{ circle.creator }}</p>
       </div>
-    </a>
-  </div>
-</br>
-{% endfor %} {% endblock %}
+    </div>
+  </a>
+  {% endfor %} 
+</div>
+
+{% endblock %}
