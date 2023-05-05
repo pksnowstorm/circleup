@@ -17,15 +17,17 @@
   </head>
   <body>
 
-    <a href="/" data-target="side_nav" id="nav-trigger" class="sidenav-trigger"><p><i class="small material-icons">group_work</i>circleUp</p></a>
+    <a href="/" data-target="side_nav" id="nav-trigger" class="light-blue darken-4 sidenav-trigger"><p class="logo-trigger"><i class="small material-icons">group_work</i>circleUp</p></a>
     <ul id="side_nav" class="sidenav card-panel indigo darken-4">
 
       {% if user.is_authenticated %}
+      <li><a href="{% url 'index' %}"><span class="amber-text text-lighten-4">Home</span></a></li>
       <li><a href="{% url 'circle_create' %}"><span class="amber-text text-lighten-4">New Circle</span></a></li>
       <li><a href="{% url 'index' %}"><span class="amber-text text-lighten-4">Circles</span></a></li>
       <li><a href="/about"><span class="amber-text text-lighten-4">About</span></a></li>
       <li><a href="{% url 'logout' %}"><span class="amber-text text-lighten-4">Log Out</span></a></li>
       {% else %}
+      <li><a href="{% url 'home' %}"><span class="amber-text text-lighten-4">Home</span></a></li>
       <li><a href="/about"><span class="amber-text text-lighten-4">About</span></a></li>
       <li><a href="{% url 'signup' %}"><span class="amber-text text-lighten-4">Sign Up</span></a></li>
       <li><a href="{% url 'login' %}"><span class="amber-text text-lighten-4">Log In</span></a></li>
